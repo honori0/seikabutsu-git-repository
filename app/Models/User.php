@@ -41,4 +41,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    // Accountに対するリレーション
+
+    //「1対多」
+    public function accounts()   
+    {
+        return $this->hasMany(Account::class);
+    }
+    
+    //followerに対するリレーション
+    public function followUsers()
+    {
+        return $this->belongsToMany(
+            'App\Models\User',
+            'follower_following',
+            'follower_id',
+            'following_id'
+        );
+    }
+  
+    //followingに対するリレーション
+    public function follow()
+    {
+        return $this->belongsToMany(
+            'App\Models\User',
+            'follower_following',
+            'follower_id',
+            'following_id'
+        );
+    }
 }
