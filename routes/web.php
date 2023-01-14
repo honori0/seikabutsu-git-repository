@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\FollowUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,3 +23,4 @@ Route::get('/', function () {
 });
 
 Route::get('/posts', [PostController::class, 'index']);
+Route::get('/categories/{category}', [CategoryController::class,'index']);
