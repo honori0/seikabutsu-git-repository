@@ -10,11 +10,19 @@ class Post extends Model
 {
     use HasFactory;
     
+   
+    
    public function getPaginateByLimit(int $limit_count = 3)
     {
         // created_atで降順に並べたあと、limitで件数制限をかける
-        return $this->orderBy('created_at', 'DESC')->paginate($limit_count);
+        return $this::with('category')->orderBy('created_at', 'DESC')->paginate($limit_count);
     }
+    
+     protected $fillable = [
+    'body',
+    'category_id',
+    'account_id'
+    ];
     
     // Categoryに対するリレーション
 

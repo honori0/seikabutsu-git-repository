@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Account;
 use App\Models\Comment;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -16,6 +17,18 @@ class PostController extends Controller
        //blade内で使う変数'posts'と設定。'posts'の中身にgetを使い、インスタンス化した$postを代入。
     }
     
+    public function create(Category $category)
+    {
+        return view('posts/create')->with(['categories' => $category->get()]);
+    }
+    
+    public function store(Post $post, PostRequest $request)
+    {
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect('/posts/' . $post->id);
+    }
+   
     /**
  * 特定IDのpostを表示する
  *
@@ -27,5 +40,7 @@ class PostController extends Controller
         return view('posts/show')->with(['post' => $post]);
     //'post'はbladeファイルで使う変数。中身は$postはid=1のPostインスタンス。
     }
+    
+   
 
 }
