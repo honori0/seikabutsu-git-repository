@@ -4,6 +4,10 @@
         <meta charset="utf-8">
         <title>複数アカウントを持ちやすいSNS</title>
     </head>
+    <x-app-layout>
+        <x-slot name="header">
+            複数アカウントを持ちやすいSNS
+        </x-slot>
 <body>
     <h1 class="title">編集画面</h1>
     <div class="content">
@@ -17,4 +21,6 @@
             <input type="submit" value="保存">
         </form>
     </div>
+    {{ Auth::user()->name }}
 </body>
+</x-app-layout>
