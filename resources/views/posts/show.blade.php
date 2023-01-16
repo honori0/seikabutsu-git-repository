@@ -7,6 +7,10 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
+    <x-app-layout>
+        <x-slot name="header">
+            複数アカウントを持ちやすいSNS
+        </x-slot>
     <body>
         <h1 class="account_id">
                 {{ $post->account_id }}
@@ -26,5 +30,7 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
+        {{ Auth::user()->name }}
     </body>
+    </x-app-layout>
 </html>

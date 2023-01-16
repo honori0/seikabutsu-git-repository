@@ -4,17 +4,20 @@
         <meta charset="utf-8">
         <title>複数アカウントを持ちやすいSNS</title>
     </head>
+    <x-app-layout>
+        <x-slot name="header">
+            複数アカウントを持ちやすいSNS　
+        </x-slot>
     <body>
-        <h1>複数アカウントを持ちやすいSNS</h1>
         <form action="/posts" method="POST">
             @csrf
             <div class="body">
-                <h2>新規投稿</h2>
+                <h1>新規投稿</h1>
                 <textarea name="post[body]" placeholder="入力してください。">{{ old('post.body') }}</textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
             </div>
             <div class="category">
-                <h3>Category</h3>
+                <h2>Category</h2>
                     <select name="post[category_id]">
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -26,5 +29,7 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
+        {{ Auth::user()->name }}
     </body>
+    </x-app-layout>
 </html>

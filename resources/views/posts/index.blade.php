@@ -6,8 +6,12 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
+    <x-app-layout>
+        <x-slot name="header">
+           複数アカウントを持ちやすいSNS 
+        </x-slot>
     <body>
-        <h1>複数アカウントを持ちやすいSNS</h1>
+        <h1>投稿一覧</h1>
         <a href='/posts/create'>create</a>
         <div class='posts'>
             @foreach ($posts as $post)
@@ -31,6 +35,7 @@
         <div class='paginate'>
             {{ $posts->links() }}
         </div>
+        {{ Auth::user()->name }}
     </body>
     <script>
     function deletePost(id) {
@@ -41,4 +46,5 @@
         }
     }
 </script>
+</x-app-layout>
 </html>
