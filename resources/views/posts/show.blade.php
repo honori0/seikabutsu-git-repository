@@ -16,6 +16,7 @@
             <div class="content__post">
                 <p>{{ $post->body }}</p>    
             </div>
+           <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
             <div class="content_timestamp">
                 <p>create: {{ $post->created_at }}</p>
                 <p>update: {{ $post->updated_at }}</p>
