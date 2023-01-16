@@ -23,7 +23,7 @@ Route::get('/posts/{post}', [PostController::class ,'show']);
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::put('/posts/{post}', [PostController::class, 'update']);
 Route::get('/categories/{category}', [CategoryController::class,'index']);
-
+Route::delete('/posts/{post}', [PostController::class,'delete']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
