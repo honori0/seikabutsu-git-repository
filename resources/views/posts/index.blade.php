@@ -10,8 +10,14 @@
         <h1>複数アカウントを持ちやすいSNS</h1>
         <div class='posts'>
             @foreach ($posts as $post)
+                <h2 class="account_id">
+                {{ $post->account_id }}
+                </h2>
                 <div class='post'>
-                    <p class='body'>{{$post->body}}</p>
+                    <h3 class='title'>
+                        <a href="/posts/{{$post->id}}">{{$post->body}}</a>     
+                    </h3>
+                    <p>{{$post->created_at}}</p>
                 </div>
             @endforeach
         </div>
