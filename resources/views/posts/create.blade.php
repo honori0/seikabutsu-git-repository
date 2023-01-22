@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>複数アカウントを持ちやすいSNS</title>
+        <title>新規投稿作成</title>
     </head>
     <x-app-layout>
         <x-slot name="header">
