@@ -19,10 +19,10 @@ class PostController extends Controller
     
     public function create(Category $category, Account $account)
     {
-        return view('posts/create')->with(['categories' => $category->get()]);
+        return view('posts/create')->with(['categories' => $category->get()],['accounts' => $account->get()]);
     }
     
-    public function store(Post $post, PostRequest $request)
+    public function store(PostRequest $request, Post $post)
     {
         $input = $request['post'];
         $post->fill($input)->save();
@@ -50,7 +50,6 @@ class PostController extends Controller
     {
         $input_post = $request['post'];
         $post->fill($input_post)->save();
-
         return redirect('/posts/' . $post->id);
     }
     
@@ -60,6 +59,4 @@ class PostController extends Controller
         return redirect('/');
     }
     
-   
-
 }

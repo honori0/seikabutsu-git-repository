@@ -9,6 +9,11 @@ class Account extends Model
 {
     use HasFactory;
     
+    public function getPaginateByLimit(int $limit_count = 10)
+    {
+    return $this->orderBy('id', 'DESC')->paginate($limit_count);
+    }
+    
     //Postに対するリレーション
     public function posts()
     {
@@ -31,4 +36,5 @@ class Account extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
 }

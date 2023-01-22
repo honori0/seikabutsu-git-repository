@@ -21,8 +21,7 @@ class Post extends Model
      protected $fillable = [
     'body',
     'category_id',
-    'account_id',
-    'updated_at'
+    'user_id'
     ];
     
     // Categoryに対するリレーション
@@ -47,4 +46,6 @@ class Post extends Model
     {
         return $this->HasMany(Comment::class);
     }
+    
+    
 }

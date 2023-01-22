@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>複数アカウントを持ちやすいSNS</title>
+        <title>投稿詳細</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
@@ -12,11 +12,8 @@
             複数アカウントを持ちやすいSNS
         </x-slot>
     <body>
-        <h1 class="account_id">
-                {{ $post->account_id }}
-        </h1>
         <div class="content">
-            
+              
             <div class="content__post">
                 <p>{{ $post->body }}</p>    
             </div>
