@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('comments', function (Blueprint $table) {
-             $table->foreignId('post_id')->constrained();   
-            //'post_id' は 'postsテーブル' の 'id' を参照する外部キー
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->text('text');
+            $table->foreignId('post_id')->constrained(); 
+            $table->foreignId('account_id')->constrained();
+            $table->timestamps();
         });
     }
 
@@ -26,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('comments');
     }
 };
