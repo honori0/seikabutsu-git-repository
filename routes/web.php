@@ -23,20 +23,22 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
-    Route::get('/', 'index')->name('index');
-    Route::post('/posts', 'store')->name('store');
-    Route::get('/posts/create', 'create')->name('create');
-    Route::get('/posts/{post}', 'show')->name('show');
-    Route::put('/posts/{post}', 'update')->name('update');
-    Route::delete('/posts/{post}', 'delete')->name('delete');
-    Route::get('/posts/{post}/edit', 'edit')->name('edit');
+    Route::get('/', 'index')->name('posts.index');
+    Route::post('/posts', 'store')->name('posts.store');
+    Route::get('/posts/create', 'create')->name('posts.create');
+    Route::get('/posts/{post}', 'show')->name('posts.show');
+    Route::put('/posts/{post}', 'update')->name('posts.update');
+    Route::delete('/posts/{post}', 'delete')->name('posts.delete');
+    Route::get('/posts/{post}/edit', 'edit')->name('posts.edit');
 });
 Route::controller(AccountController::class)->middleware(['auth'])->group(function(){
-    Route::get('/accounts','index')->name('index');
+    Route::get('/accounts','index')->name('accounts.index');
+    Route::get('/accounts/create','create')->name('accounts.create');
+    Route::post('/accounts','store')->name('accounts.store');
 });
 
 
-Route::get('/categories/{category}', [CategoryController::class,'index']);
+Route::get('/categories/{category}', [CategoryController::class,'categories.index']);
 
 
 Route::middleware('auth')->group(function () {

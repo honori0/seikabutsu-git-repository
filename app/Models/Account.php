@@ -14,6 +14,11 @@ class Account extends Model
     return $this->orderBy('id', 'DESC')->paginate($limit_count);
     }
     
+    protected $fillable = [
+    'name',
+    'user_id'
+    ];
+    
     //Postに対するリレーション
     public function posts()
     {
