@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>アカウント作成</title>
+        <title>アカウント詳細</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
@@ -11,19 +11,16 @@
             複数アカウントを持ちやすいSNS
         </x-slot>
     <body>
-        <h1>アカウント作成</h1>
-        <form action="/accounts" method="POST">
-            @csrf
-            <div class="title">
-                <h2>アカウント名</h2>
-                <input type="text" name="account[name]" placeholder="アカウント名"/>
-            </div>
-            <input type="submit" value="store"/>
-        </form>
+        <h1 class="name">
+            {{ $account->name }}
+        </h1>
+        <div class="user_id">
+            <h3>ユーザー</h3>
+            <p>{{ $account->user_id }}</p>    
+        </div>
         <div class="footer">
             <a href="/accounts">戻る</a>
         </div>
-    {{ Auth::user()->name }}
     </body>
     </x-app-layout>
 </html>

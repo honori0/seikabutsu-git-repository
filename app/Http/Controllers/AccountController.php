@@ -29,4 +29,9 @@ class AccountController extends Controller
         dd($account);
         return redirect('/accounts/' . $account->id);
     }
+    
+    public function show(Account $account)
+    {
+        return view('accounts/show')->with(['account' => $account]);
+    }
 }

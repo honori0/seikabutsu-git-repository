@@ -16,7 +16,9 @@
         <div class='accounts'>
             @foreach ($accounts as $account)
                 <div class='account'>
-                    <h2 class='name'>{{$account->name}}</h2>
+                    <h2 class='name'>
+                    <a href="/accounts/{{ $account->id }}">{{ $account->name }}</a>
+                    </h2>
                 </div>
             @endforeach
         </div>
