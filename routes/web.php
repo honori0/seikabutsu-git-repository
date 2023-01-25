@@ -33,8 +33,10 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
 });
 Route::controller(AccountController::class)->middleware(['auth'])->group(function(){
     Route::get('/accounts','index')->name('accounts.index');
-    Route::get('/accounts/create','create')->name('accounts.create');
     Route::post('/accounts','store')->name('accounts.store');
+    Route::get('/accounts/create','create')->name('accounts.create');
+    Route::get('/accounts/{account}', 'show')->name('accounts.show');
+    
 });
 
 
