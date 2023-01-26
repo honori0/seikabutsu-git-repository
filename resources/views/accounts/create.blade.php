@@ -16,7 +16,8 @@
             @csrf
             <div class="title">
                 <h2>アカウント名</h2>
-                <input type="text" name="account[name]" placeholder="アカウント名"/>
+                <input type="text" name="account[name]" placeholder="アカウント名"value="{{ old('account.name') }}"/>
+                <p class="name__error" style="color:red">{{ $errors->first('account.name') }}</p>
             </div>
             <input type="submit" value="store"/>
         </form>
