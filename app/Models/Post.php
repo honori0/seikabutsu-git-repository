@@ -21,7 +21,7 @@ class Post extends Model
      protected $fillable = [
     'body',
     'category_id',
-    'user_id'
+    'account_id'
     ];
     
     // Categoryに対するリレーション

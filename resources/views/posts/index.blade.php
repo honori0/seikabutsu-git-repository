@@ -33,7 +33,6 @@
             {{ $posts->links() }}
         </div>
         {{ Auth::user()->name }}
-    </body>
     <script>
     function deletePost(id) {
         'use strict'
@@ -42,6 +41,8 @@
             document.getElementById(`form_${id}`).submit();
         }
     }
-</script>
+    </script>
+    </body>
+    
 </x-app-layout>
 </html>

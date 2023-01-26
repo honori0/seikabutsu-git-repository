@@ -26,6 +26,7 @@ class PostController extends Controller
     {
         $input = $request['post'];
         $post->fill($input)->save();
+        dd($post);
         return redirect('/posts/' . $post->id);
     }
    
@@ -49,6 +50,7 @@ class PostController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         $input_post = $request['post'];
+        $input['account_id'] = $items = \DB::table('accounts')->first();
         $post->fill($input_post)->save();
         return redirect('/posts/' . $post->id);
     }
