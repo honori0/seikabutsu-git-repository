@@ -12,6 +12,7 @@
         </x-slot>
     <body>
         <h1>アカウント一覧</h1>
+        <p>現在のアカウント：{{$now_account}}</p>
         <a href='/accounts/create'>新規アカウント作成</a>
         <div class='accounts'>
             @foreach ($accounts as $account)
@@ -24,12 +25,12 @@
                         @method('DELETE')
                         <button type="button" onclick="deleteAccount({{ $account->id }})">delete</button> 
                     </form>
+                    <a href="/change/{{ $account->id }}">アカウントを選択する</a>
+                    
                 </div>
             @endforeach
         </div>
-        <div class='paginate'>
-            {{ $accounts->links() }}
-        </div>
+        
         {{ Auth::user()->name }}
     <script>
     function deleteAccount(id) {
@@ -38,6 +39,9 @@
         if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
             document.getElementById(`form_${id}`).submit();
                 }
+            
+            
+    
             }
     </script>
     </body>

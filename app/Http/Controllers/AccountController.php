@@ -3,18 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
 use App\Models\Post;
 use App\Models\Account;
 use App\Mdels\Comment;
 use App\Models\User;
 use App\Http\Requests\AccountRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
      public function index(Account $account)
     {
-        return view('accounts/index')->with(['accounts' => $account->getPaginateByLimit()]);
+        $id = Auth::id();
+        $accounts = $account->where('user_id', $id)->get();
+        $now_account = $account->find(Auth::user()->now_account_id)->name;
+        return view('accounts/index')->with(['accounts' => $accounts,'now_account'=>$now_account]);
     }
   
     public function create()
@@ -37,7 +41,16 @@ class AccountController extends Controller
     
     public function delete(Account $account)
     {
-    $account->delete();
-    return redirect('/accounts');
+        $account->delete();
+        return redirect('/accounts');
+    }
+    
+    public function change(Account $account)
+    {
+        $user=Auth::user();
+        $input["now_account_id"] = $account->id;
+        $user->fill($input)->save();
+        return redirect('/accounts');
+       
     }
 }

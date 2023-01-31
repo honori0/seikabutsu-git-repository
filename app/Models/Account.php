@@ -44,4 +44,11 @@ class Account extends Model
         return $this->belongsTo(User::class);
     }
     
+    // Userに対するリレーション
+
+    //「1対1」
+    public function now_account_id()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

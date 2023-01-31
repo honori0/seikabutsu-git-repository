@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Account;
 use App\Models\Comment;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -22,11 +23,11 @@ class PostController extends Controller
         return view('posts/create')->with(['categories' => $category->get()],['accounts' => $account->get()]);
     }
     
-    public function store(PostRequest $request, Post $post)
+    public function store(PostRequest $request, Post $post, Account $account)
     {
         $input = $request['post'];
+        $input['account_id']=DB::table('accounts')->first();
         $post->fill($input)->save();
-        dd($post);
         return redirect('/posts/' . $post->id);
     }
    
