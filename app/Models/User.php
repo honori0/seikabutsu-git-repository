@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'now_account_id'
     ];
 
     /**
@@ -76,6 +77,14 @@ class User extends Authenticatable
             'follower_id',
             'following_id'
         );
+    }
+    
+    // Accountに対するリレーション
+
+    //「1対多」
+    public function now_account_id()
+    {
+        return $this->hasMany(Account::class);
     }
    
 

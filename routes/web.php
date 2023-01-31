@@ -37,6 +37,7 @@ Route::controller(AccountController::class)->middleware(['auth'])->group(functio
     Route::get('/accounts/create','create')->name('accounts.create');
     Route::get('/accounts/{account}', 'show')->name('accounts.show');
     Route::delete('/accounts/{account}', 'delete')->name('accounts.delete');
+    Route::get('/change/{account}','change')->name('accounts.change');
     
 });
 
