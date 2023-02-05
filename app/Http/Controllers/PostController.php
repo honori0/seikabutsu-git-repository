@@ -7,8 +7,11 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Account;
 use App\Models\Comment;
+use App\Models\User;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class PostController extends Controller
 {
@@ -26,7 +29,8 @@ class PostController extends Controller
     public function store(PostRequest $request, Post $post, Account $account)
     {
         $input = $request['post'];
-        $input['account_id']=DB::table('accounts')->first();
+        $user=Auth::user();
+        $input["account_id"] = $user->now_account_id;
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
     }
@@ -51,7 +55,6 @@ class PostController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         $input_post = $request['post'];
-        $input['account_id'] = $items = \DB::table('accounts')->first();
         $post->fill($input_post)->save();
         return redirect('/posts/' . $post->id);
     }
