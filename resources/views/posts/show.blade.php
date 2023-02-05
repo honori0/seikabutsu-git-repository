@@ -13,7 +13,10 @@
         </x-slot>
     <body>
         <div class="content">
-              
+            
+            <div class="content_account">
+                <p>{{ $post->account->name}}</p>
+            </div>  
             <div class="content__post">
                 <p>{{ $post->body }}</p>    
             </div>

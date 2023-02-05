@@ -15,7 +15,7 @@ class Post extends Model
    public function getPaginateByLimit(int $limit_count = 3)
     {
         // created_atで降順に並べたあと、limitで件数制限をかける
-        return $this::with('category')->orderBy('created_at', 'DESC')->paginate($limit_count);
+        return $this::with('category','account')->orderBy('created_at', 'DESC')->paginate($limit_count);
     }
     
      protected $fillable = [
@@ -33,9 +33,18 @@ class Post extends Model
     }
     
     //Accountに対するリレーション
-    public function accounts()
+    
+    //「1対多」
+    public function account()
     {
-        //like機能　「多対多」の関係
+        return $this->belongsTo(Account::class);
+    }
+    
+    //Accountに対するリレーション
+    
+    //like機能　「多対多」の関係
+    public function likes()
+    {
         return $this->belongsToMany(Account::class);
     }
     

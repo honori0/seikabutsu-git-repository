@@ -22,10 +22,11 @@ class Account extends Model
     ];
     
     //Postに対するリレーション
+    
+    //「1対多」
     public function posts()
     {
-        //like機能　「多対多」の関係
-        return $this->belongsToMany(Post::class);
+        return $this->hasMany(Post::class);
     }
     
     // Commentに対するリレーション
@@ -50,5 +51,13 @@ class Account extends Model
     public function now_account_id()
     {
         return $this->belongsTo(User::class);
+    }
+    
+    
+    //Likeに対するリレーション
+    public function likes()
+    {
+        //like機能　「多対多」の関係
+        return $this->belongsToMany(Post::class);
     }
 }

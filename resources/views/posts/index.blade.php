@@ -19,6 +19,7 @@
                     <h2 class='title'>
                         <a href="/posts/{{$post->id}}">{{$post->body}}</a>     
                     </h2>
+                    <p>{{ $post->account->name }}</p>
                     <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                     <p>{{$post->created_at}}</p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
