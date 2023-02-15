@@ -12,7 +12,7 @@
         <form action="/posts" method="POST">
             @csrf
             <div class="body">
-                <h1>新規投稿</h1>
+                <h1 class="font-bold text-gray-900">新規投稿</h1>
                 <textarea name="post[body]" placeholder="入力してください。">{{ old('post.body') }}</textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
             </div>

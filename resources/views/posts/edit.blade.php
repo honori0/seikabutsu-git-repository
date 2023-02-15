@@ -9,7 +9,7 @@
             複数アカウントを持ちやすいSNS
         </x-slot>
 <body>
-    <h1 class="title">投稿の編集</h1>
+    <h1 class="font-bold text-gray-900">投稿の編集</h1>
     <div class="content">
         <form action="/posts/{{ $post->id }}" method="POST">
             @csrf
